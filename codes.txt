@@ -1,0 +1,23 @@
+xhost +local:docker
+
+docker run -it --rm\
+  --gpus all \
+  --network host \
+  --privileged \
+  -e DISPLAY=$DISPLAY \
+  -e QT_X11_NO_MITSHM=1 \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -v /dev:/dev \
+  -v $(pwd):/host_ws \
+  --name dr_mpc_container \
+  minhyeong3463/dr_mpc:initial
+
+
+python -c "import torch; print(torch.__version__)"
+python -c "import torch; print(torch.cuda.is_available())"
+python -c "import torch_geometric; print(torch_geometric.__version__)"
+python -c "import pysteam; print('pysteam ok')"
+python -c "import rvo2; print('rvo2 ok')"
+
+
+python3 scripts/online_continuous_task.py
