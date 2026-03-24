@@ -211,3 +211,4 @@ All pair-specific parameters are stored in `configs/guide_dog_params.yaml`.
 
 - This fork documents and exposes the paired simulator logic; it does not replace the original DR-MPC paper or upstream implementation.
 - The upstream project should still be credited when this fork is used or extended.
+- We will add Filter for BVI comfortness approach, so stay tuned!
